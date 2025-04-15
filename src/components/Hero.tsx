@@ -4,7 +4,7 @@ import ContentPage from "./ContentPage";
 
 const Hero = ({ heroContent }: any) => {
   return (
-    <div className="pt-[139px] pb-[62px] flex items-center justify-center max-xl:pt-20 max-lg:pt-16 max-md:py-12">
+    <div className="pt-[139px] pb-[62px] flex items-center justify-center max-xl:pt-20 max-lg:pt-16 max-md:py-12 min-h-screen">
       <div className="w-full max-w-[1240px] mx-auto flex justify-center items-center flex-col max-xl:max-w-[969px]">
         <div className="flex items-center justify-between w-full max-lg:px-4 max-md:flex-col max-md:gap-3">
           <h1 className="text-[32px] font-semibold leading-[100%] max-lg:text-2xl max-md:text-2xl">
