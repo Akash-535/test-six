@@ -32,13 +32,18 @@ const ContentPage = ({ contentData = [] }: any) => {
   const handleDelete = (index: number) => {
     setData((prevData) => prevData.filter((_, i) => i !== index));
   };
-
   const handleSearchChange = (e: any) => {
     const value = e.target.value;
     setSearch(value);
 
-    const pageParam = searchParams.get("page");
-    window.history.pushState(null, "", `?search=${value}${pageParam}`);
+    const params = new URLSearchParams(window.location.search);
+    if (value) {
+      params.set("search", value);
+    } else {
+      params.delete("search");
+    }
+
+    window.history.pushState(null, "", `?${params.toString()}`);
   };
 
   return (
