@@ -26,7 +26,7 @@ const ContentPage = ({ contentData = [] }: any) => {
     setData((prevData) => prevData.filter((_, i) => i !== index));
   };
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearch(value);
 
@@ -84,7 +84,7 @@ const ContentPage = ({ contentData = [] }: any) => {
             </p>
           </div>
           <input
-            onChange={handleSearchChange}
+            onChange={handleSearch}
             value={search}
             type="text"
             placeholder="Find"
