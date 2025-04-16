@@ -80,7 +80,7 @@ const TableContent = ({ tableMap, onDelete }: any) => {
                           </p>
                           <button
                             onClick={() => onDelete(i)}
-                            className="cursor-pointer"
+                            className="cursor-pointer dlt-icon"
                           >
                             <DeleteIcon />
                           </button>

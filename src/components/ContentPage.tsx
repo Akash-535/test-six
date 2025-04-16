@@ -64,7 +64,6 @@ const ContentPage = ({ contentData = [] }: any) => {
   return (
     <div className="flex flex-col w-full">
       <div className="border border-[#F1F1F1] bg-white shadow-[0px_16px_53.7px_0px_#4F02FE14] rounded-md pb-6 pt-2.5 w-full max-w-[969px] max-xl:mx-auto">
-        {/* Controls */}
         <div className="flex justify-between items-center w-full px-[15px] pb-4 max-md:flex-col-reverse max-md:gap-5">
           <div className="flex items-center gap-2.5">
             <p className="text-sm font-medium text-primary-black">Show</p>
@@ -93,10 +92,9 @@ const ContentPage = ({ contentData = [] }: any) => {
           />
         </div>
 
-        {/* Table */}
         <TableContent tableMap={paginatedData} onDelete={handleDelete} />
       </div>
-      {/* Pagination */}
+
       <div className="pt-8 flex justify-end">
         <ReactPaginate
           pageCount={pageCount}
@@ -117,7 +115,11 @@ const ContentPage = ({ contentData = [] }: any) => {
           }
           previousClassName="bg-white border border-[#e5e7eb] rounded-xl px-4 py-2 text-sm font-medium cursor-pointer"
           nextClassName="bg-white border border-[#e5e7eb] rounded-xl px-4 py-2 text-sm font-medium cursor-pointer"
-          breakLabel={<span className="px-4 py-2">...</span>}
+          breakLabel={
+            <span className="bg-white text-black border border-[#e5e7eb] rounded-xl px-4 py-2 text-sm font-medium hover:bg-gray-100 transition cursor-pointer">
+              ...
+            </span>
+          }
           breakClassName="text-black"
         />
       </div>

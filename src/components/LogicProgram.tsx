@@ -9,21 +9,21 @@ const LogicProgram = () => {
   const [result, setResult] = useState("");
 
   const checkTriangle = () => {
-    const a1 = parseFloat(angle1.trim());
-    const a2 = parseFloat(angle2.trim());
-    const a3 = parseFloat(angle3.trim());
+    const angleOne = parseFloat(angle1.trim());
+    const angleTwo = parseFloat(angle2.trim());
+    const angleThree = parseFloat(angle3.trim());
 
-    if (isNaN(a1) || isNaN(a2) || isNaN(a3)) {
+    if (isNaN(angleOne) || isNaN(angleTwo) || isNaN(angleThree)) {
       setResult("Please enter valid numbers for all angles.");
       return;
     }
 
-    if (a1 <= 0 || a2 <= 0 || a3 <= 0) {
+    if (angleOne <= 0 || angleTwo <= 0 || angleThree <= 0) {
       setResult("All angles must be greater than 0.");
       return;
     }
 
-    const sum = a1 + a2 + a3;
+    const sum = angleOne + angleTwo + angleThree;
 
     if (sum === 180) {
       setResult("The angles form a valid triangle!");
@@ -45,8 +45,6 @@ const LogicProgram = () => {
         <h1 className="text-2xl font-bold mb-6 text-center">
           🔺 Triangle Validator
         </h1>
-
-        {/* Input Fields */}
         {[angle1, angle2, angle3].map((angle, i) => (
           <div className="mb-4" key={i}>
             <label className="block mb-1 font-medium">Angle {i + 1} (°)</label>
@@ -63,8 +61,6 @@ const LogicProgram = () => {
             />
           </div>
         ))}
-
-        {/* Buttons */}
         <div className="flex gap-3">
           <button
             onClick={checkTriangle}
@@ -80,8 +76,6 @@ const LogicProgram = () => {
             Reset
           </button>
         </div>
-
-        {/* Result */}
         {result && (
           <div className="mt-4 text-center font-semibold text-lg text-gray-800">
             {result}

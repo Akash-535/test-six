@@ -18,7 +18,7 @@ const UserGuides = () => {
           {USER_GUIDES_LIST.map((obj, i) => (
             <div
               key={i}
-              className="w-full min-w-[251px] max-w-[251px] max-md:min-w-0 max-md:max-w-[160px] bg-gradient-to-r from-[#E7E2FA] to-[#4F02FE00] py-3 px-3.5 max-md:px-2 max-md:py-2.5 gap-2.5 flex items-center border-l-2 border-[#4F02FE]"
+              className="w-full min-w-[251px] max-w-[251px] max-md:min-w-0 max-md:max-w-[160px] bg-gradient-to-r from-[#E7E2FA] to-[#4F02FE00] py-3 px-3.5 max-md:px-2 max-md:py-2.5 gap-2.5 flex items-center border-l-2 border-[#4F02FE] cursor-pointer"
             >
               <SaveIcon />
               <p className="text-primary-black text-sm font-medium leading-[100%] max-md:text-xs">
@@ -36,7 +36,7 @@ const UserGuides = () => {
           {CONATCT_SUPPORT_LIST.map((obj, i) => (
             <div
               key={i}
-              className="w-full min-w-[251px] max-w-[251px] max-md:min-w-0 max-md:max-w-[160px] bg-gradient-to-r from-[#F1E1F3] to-[#CD0CA700] py-3 px-3.5 max-md:px-2 max-md:py-2.5 gap-2.5 flex items-center border-l-2 border-[#CD0CA7]"
+              className="w-full min-w-[251px] max-w-[251px] max-md:min-w-0 max-md:max-w-[160px] bg-gradient-to-r from-[#F1E1F3] to-[#CD0CA700] py-3 px-3.5 max-md:px-2 max-md:py-2.5 gap-2.5 flex items-center border-l-2 border-[#CD0CA7] cursor-pointer"
             >
               {i === 0 ? <FaqsIcon /> : <COntactSupportIcon />}
               <p className="text-primary-black text-sm font-medium leading-[100%] max-md:text-xs">
@@ -50,7 +50,7 @@ const UserGuides = () => {
         <p className="text-xl font-medium leading-[100%] pb-5 text-primary-black max-lg:text-lg max-md:text-base max-md:pb-3">
           Others
         </p>
-        <div className="w-full min-w-[251px] max-w-[251px] max-md:min-w-0 max-md:max-w-[160px] bg-gradient-to-r from-[#F1E1F3] to-[#CD0CA700] py-3 px-3.5 max-md:px-2 max-md:py-2.5 gap-2.5 flex items-center border-l-2 border-[#CD0CA7]">
+        <div className="w-full min-w-[251px] max-w-[251px] max-md:min-w-0 max-md:max-w-[160px] bg-gradient-to-r from-[#F1E1F3] to-[#CD0CA700] py-3 px-3.5 max-md:px-2 max-md:py-2.5 gap-2.5 flex items-center border-l-2 border-[#CD0CA7] cursor-pointer">
           <DocsIcon />
           <p className="text-primary-black text-sm font-medium leading-[100%] max-md:text-xs ">
             DevSecOps Docs
