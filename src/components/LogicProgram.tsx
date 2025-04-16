@@ -19,13 +19,11 @@ const LogicProgram = () => {
       return;
     }
 
-    // Check if all angles are positive
     if (a1 <= 0 || a2 <= 0 || a3 <= 0) {
       setResult("All angles must be greater than 0.");
       return;
     }
-
-    // Check if the sum of angles equals 180
+    
     const sum = a1 + a2 + a3;
     if (sum === 180) {
       setResult("The angles form a valid triangle!");

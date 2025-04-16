@@ -3,9 +3,10 @@ import { TABLE_HEAD_LIST } from "@/utils/helper";
 import { DeleteIcon, DownArrowIcon, TopArrowIcon } from "@/utils/icons";
 import Link from "next/link";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TableContent = ({ tableMap, onDelete }: any) => {
   return (
-    <div className="overflow-auto">
+    <div className="overflow-auto w-full">
       <table className="w-full">
         <thead>
           <tr className="bg-[#3F02CB] flex">
@@ -40,50 +41,53 @@ const TableContent = ({ tableMap, onDelete }: any) => {
             <td>
               <table>
                 <tbody>
-                  {tableMap.map((obj: any, i: number) => (
-                    <tr
-                      key={i}
-                      className="hover:bg-[#FBECF8] duration-300 ease-linear"
-                    >
-                      <td className="pl-[15px] py-[11.5px] min-w-[90px]">
-                        <p className="text-xs text-primary-black font-medium leading-[100%]">
-                          {obj.alpha_two_code}
-                        </p>
-                      </td>
-                      <td className="pl-[15px] py-[11.5px] min-w-[235px]">
-                        <Link
-                          href={obj.web_pages}
-                          className="text-xs text-primary-black font-medium leading-[100%]"
-                        >
-                          {obj.web_pages}
-                        </Link>
-                      </td>
-                      <td className="pl-[15px] py-[11.5px] min-w-[200px]">
-                        <Link
-                          href={obj.domains}
-                          className="text-xs text-primary-black font-medium leading-[100%]"
-                        >
-                          {obj.domains}
-                        </Link>
-                      </td>
-                      <td className="pl-[15px] py-[11.5px] min-w-[175px]">
-                        <p className="text-xs text-primary-black font-medium leading-[100%]">
-                          {obj.country}
-                        </p>
-                      </td>
-                      <td className="px-[15px] py-[11.5px] min-w-[267px] flex items-center justify-between">
-                        <p className="text-xs text-primary-black font-medium leading-[100%]">
-                          {obj.name}
-                        </p>
-                        <button
-                          onClick={() => onDelete(i)}
-                          className="cursor-pointer"
-                        >
-                          <DeleteIcon />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                  {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    tableMap.map((obj: any, i: number) => (
+                      <tr
+                        key={i}
+                        className="hover:bg-[#FBECF8] duration-300 ease-linear"
+                      >
+                        <td className="pl-[15px] py-[11.5px] min-w-[90px]">
+                          <p className="text-xs text-primary-black font-medium leading-[100%]">
+                            {obj.alpha_two_code}
+                          </p>
+                        </td>
+                        <td className="pl-[15px] py-[11.5px] min-w-[235px]">
+                          <Link
+                            href={obj.web_pages}
+                            className="text-xs text-primary-black font-medium leading-[100%]"
+                          >
+                            {obj.web_pages}
+                          </Link>
+                        </td>
+                        <td className="pl-[15px] py-[11.5px] min-w-[200px]">
+                          <Link
+                            href={obj.domains}
+                            className="text-xs text-primary-black font-medium leading-[100%]"
+                          >
+                            {obj.domains}
+                          </Link>
+                        </td>
+                        <td className="pl-[15px] py-[11.5px] min-w-[175px]">
+                          <p className="text-xs text-primary-black font-medium leading-[100%]">
+                            {obj.country}
+                          </p>
+                        </td>
+                        <td className="px-[15px] py-[11.5px] min-w-[267px] flex items-center justify-between">
+                          <p className="text-xs text-primary-black font-medium leading-[100%]">
+                            {obj.name}
+                          </p>
+                          <button
+                            onClick={() => onDelete(i)}
+                            className="cursor-pointer"
+                          >
+                            <DeleteIcon />
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  }
                 </tbody>
               </table>
             </td>

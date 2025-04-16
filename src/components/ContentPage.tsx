@@ -1,18 +1,18 @@
 "use client";
 import { SelectIcon } from "@/utils/icons";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import TableContent from "./TableContent";
 import ReactPaginate from "react-paginate";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ContentPage = ({ contentData = [] }: any) => {
   const [search, setSearch] = useState("");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any[]>([]);
   const [currentPage, setCurrentPage] = useState(0); // 0-based index
-  const [itemsPerPage, setItemsPerPage] = useState(10);
   const searchParams = useSearchParams();
-
+  const itemsPerPage = 10;
   useEffect(() => {
     setData(contentData);
 
@@ -37,10 +37,7 @@ const ContentPage = ({ contentData = [] }: any) => {
     } else {
       params.delete("search");
     }
-
-    params.set("page", "1"); // reset to page 1 on new search
     window.history.pushState(null, "", `?${params.toString()}`);
-    setCurrentPage(0);
   };
 
   const handlePageClick = (selectedItem: { selected: number }) => {
@@ -52,17 +49,8 @@ const ContentPage = ({ contentData = [] }: any) => {
     window.history.pushState(null, "", `?${params.toString()}`);
   };
 
-  const handleItemsPerPageChange = (
-    e: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setItemsPerPage(parseInt(e.target.value));
-    setCurrentPage(0);
-    const params = new URLSearchParams(window.location.search);
-    params.set("page", "1");
-    window.history.pushState(null, "", `?${params.toString()}`);
-  };
-
   const filteredData = data.filter(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (obj: any) =>
       obj.name?.toLowerCase().includes(search.toLowerCase()) ||
       obj.country?.toLowerCase().includes(search.toLowerCase())
@@ -75,20 +63,16 @@ const ContentPage = ({ contentData = [] }: any) => {
   );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div className="border border-[#F1F1F1] bg-white shadow-[0px_16px_53.7px_0px_#4F02FE14] rounded-md pb-6 pt-2.5 w-full max-w-[969px] max-xl:mx-auto">
         {/* Controls */}
         <div className="flex justify-between items-center w-full px-[15px] pb-4 max-md:flex-col-reverse max-md:gap-5">
           <div className="flex items-center gap-2.5">
             <p className="text-sm font-medium text-primary-black">Show</p>
             <div className="flex items-center bg-[#A40A86] min-w-[59px] justify-center gap-1 rounded-md">
-              <select
-                className="bg-[#A40A86] py-1 px-2 text-white rounded-sm cursor-pointer appearance-none outline-none"
-                onChange={handleItemsPerPageChange}
-                value={itemsPerPage}
-              >
-                <option value="5">5</option>
+              <select className="bg-[#A40A86] py-1 px-2 text-white rounded-sm cursor-pointer appearance-none outline-none">
                 <option value="10">10</option>
+                <option value="5">5</option>
                 <option value="15">15</option>
                 <option value="20">20</option>
                 <option value="25">25</option>
@@ -117,7 +101,7 @@ const ContentPage = ({ contentData = [] }: any) => {
       <div className="pt-8 flex justify-end">
         <ReactPaginate
           pageCount={pageCount}
-          pageRangeDisplayed={2}
+          pageRangeDisplayed={3}
           marginPagesDisplayed={1}
           onPageChange={handlePageClick}
           forcePage={currentPage}

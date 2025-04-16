@@ -2,6 +2,7 @@ import React from "react";
 import UserGuides from "./UserGuides";
 import ContentPage from "./ContentPage";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Hero = ({ heroContent }: any) => {
   return (
     <div className="pt-[139px] pb-[62px] flex items-center justify-center max-xl:pt-20 max-lg:pt-16 max-md:py-12 min-h-screen">

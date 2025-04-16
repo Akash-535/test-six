@@ -1,29 +1,45 @@
 import Hero from "@/components/Hero";
+import LogicProgram from "@/components/LogicProgram";
+import LogicProgramTwo from "@/components/LogicProgramTwo";
+import { Suspense } from "react";
 
-// Fetching data function
 async function getData() {
   try {
     const response = await fetch(
       "http://universities.hipolabs.com/search?name=middle",
-      {
-        method: "GET",
-      }
+      { method: "GET" }
     );
     const data = await response.json();
-    console.log("Fetched data:", data);
     return data;
   } catch (error) {
     console.error("Failed to fetch data:", error);
+    return [];
   }
-  return [];
 }
 
 export default async function Home() {
-  const heroData = await getData();
-  console.log("Data passed to Hero:", heroData);
+  // Fetch 3 times and flatten into one array
+  const results = await Promise.all([
+    getData(),
+    getData(),
+    getData(),
+    getData(),
+    getData(),
+    getData(),
+    getData(),
+    getData(),
+    getData(),
+    getData(),
+  ]);
+  const combinedData = results.flat();
+
   return (
     <>
-      <Hero heroContent={heroData} />
+      <Suspense>
+        <Hero heroContent={combinedData} />
+      </Suspense>
+      <LogicProgram />
+      <LogicProgramTwo />
     </>
   );
 }
