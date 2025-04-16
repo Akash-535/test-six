@@ -3,14 +3,14 @@
 import React, { useState } from "react";
 
 const LogicProgramTwo = () => {
-  const [sp, setSp] = useState("");
-  const [cp, setCp] = useState("");
+  const [sell, setSell] = useState("");
+  const [cost, setCost] = useState("");
   const [result, setResult] = useState("");
   const [error, setError] = useState("");
 
   const calculate = () => {
-    const sellingPrice = parseFloat(sp);
-    const costPrice = parseFloat(cp);
+    const sellingPrice = parseFloat(sell);
+    const costPrice = parseFloat(cost);
     if (isNaN(sellingPrice) || isNaN(costPrice)) {
       setError("Enter a value");
       setResult("");
@@ -36,8 +36,8 @@ const LogicProgramTwo = () => {
           <label className="block mb-1 font-medium">Selling Price </label>
           <input
             type="number"
-            value={sp}
-            onChange={(e) => setSp(e.target.value)}
+            value={sell}
+            onChange={(e) => setSell(e.target.value)}
             className="w-full border border-gray-300 rounded px-3 py-2 outline-none"
             placeholder="Selling price (₹)"
           />
@@ -46,8 +46,8 @@ const LogicProgramTwo = () => {
           <label className="block mb-1 font-medium">Cost Price </label>
           <input
             type="number"
-            value={cp}
-            onChange={(e) => setCp(e.target.value)}
+            value={cost}
+            onChange={(e) => setCost(e.target.value)}
             className="w-full border border-gray-300 rounded px-3 py-2 outline-none"
             placeholder="Cost price (₹)"
           />

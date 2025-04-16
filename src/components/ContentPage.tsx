@@ -13,12 +13,11 @@ const ContentPage = ({ contentData = [] }: any) => {
   const [currentPage, setCurrentPage] = useState(0);
   const searchParams = useSearchParams();
   const itemsPerPage = 10;
+
   useEffect(() => {
     setData(contentData);
-
     const searchParam = searchParams.get("search");
     const pageParam = searchParams.get("page");
-
     if (searchParam) setSearch(searchParam);
     if (pageParam) setCurrentPage(parseInt(pageParam) - 1);
   }, [contentData, searchParams]);
