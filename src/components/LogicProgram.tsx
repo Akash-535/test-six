@@ -9,11 +9,10 @@ const LogicProgram = () => {
   const [result, setResult] = useState("");
 
   const checkTriangle = () => {
-    const a1 = parseFloat(angle1);
-    const a2 = parseFloat(angle2);
-    const a3 = parseFloat(angle3);
+    const a1 = parseFloat(angle1.trim());
+    const a2 = parseFloat(angle2.trim());
+    const a3 = parseFloat(angle3.trim());
 
-    // Validate inputs
     if (isNaN(a1) || isNaN(a2) || isNaN(a3)) {
       setResult("Please enter valid numbers for all angles.");
       return;
@@ -23,13 +22,21 @@ const LogicProgram = () => {
       setResult("All angles must be greater than 0.");
       return;
     }
-    
+
     const sum = a1 + a2 + a3;
+
     if (sum === 180) {
       setResult("The angles form a valid triangle!");
     } else {
       setResult("The angles do not form a valid triangle.");
     }
+  };
+
+  const resetFields = () => {
+    setAngle1("");
+    setAngle2("");
+    setAngle3("");
+    setResult("");
   };
 
   return (
@@ -39,51 +46,42 @@ const LogicProgram = () => {
           🔺 Triangle Validator
         </h1>
 
-        {/* Input for Angle 1 */}
-        <div className="mb-4">
-          <label className="block mb-1 font-medium">Angle 1 (°)</label>
-          <input
-            type="number"
-            value={angle1}
-            onChange={(e) => setAngle1(e.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2"
-            placeholder="Enter first angle"
-          />
+        {/* Input Fields */}
+        {[angle1, angle2, angle3].map((angle, i) => (
+          <div className="mb-4" key={i}>
+            <label className="block mb-1 font-medium">Angle {i + 1} (°)</label>
+            <input
+              type="number"
+              value={angle}
+              onChange={(e) => {
+                if (i === 0) setAngle1(e.target.value);
+                else if (i === 1) setAngle2(e.target.value);
+                else setAngle3(e.target.value);
+              }}
+              className="w-full border border-gray-300 rounded px-3 py-2"
+              placeholder={`Enter angle ${i + 1}`}
+            />
+          </div>
+        ))}
+
+        {/* Buttons */}
+        <div className="flex gap-3">
+          <button
+            onClick={checkTriangle}
+            className="flex-1 bg-blue-500 border border-transparent text-white py-2 rounded hover:bg-transparent hover:text-blue-500 hover:border-blue-500 transition-all duration-300 cursor-pointer"
+          >
+            Check Triangle
+          </button>
+
+          <button
+            onClick={resetFields}
+            className="flex-1 bg-gray-200 text-gray-800 py-2 rounded hover:bg-gray-300 transition-all ease-linear duration-300 cursor-pointer"
+          >
+            Reset
+          </button>
         </div>
 
-        {/* Input for Angle 2 */}
-        <div className="mb-4">
-          <label className="block mb-1 font-medium">Angle 2 (°)</label>
-          <input
-            type="number"
-            value={angle2}
-            onChange={(e) => setAngle2(e.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2"
-            placeholder="Enter second angle"
-          />
-        </div>
-
-        {/* Input for Angle 3 */}
-        <div className="mb-4">
-          <label className="block mb-1 font-medium">Angle 3 (°)</label>
-          <input
-            type="number"
-            value={angle3}
-            onChange={(e) => setAngle3(e.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2"
-            placeholder="Enter third angle"
-          />
-        </div>
-
-        {/* Button to check triangle */}
-        <button
-          onClick={checkTriangle}
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-        >
-          Check Triangle
-        </button>
-
-        {/* Display the result */}
+        {/* Result */}
         {result && (
           <div className="mt-4 text-center font-semibold text-lg text-gray-800">
             {result}

@@ -10,7 +10,7 @@ const ContentPage = ({ contentData = [] }: any) => {
   const [search, setSearch] = useState("");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any[]>([]);
-  const [currentPage, setCurrentPage] = useState(0); // 0-based index
+  const [currentPage, setCurrentPage] = useState(0);
   const searchParams = useSearchParams();
   const itemsPerPage = 10;
   useEffect(() => {

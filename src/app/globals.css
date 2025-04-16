@@ -17,3 +17,9 @@ body {
 .button-bg:hover {
   background-image: linear-gradient(45deg, #eb088d, #a911c6, #7717f3, #640df9);
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

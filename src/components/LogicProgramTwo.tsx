@@ -57,7 +57,7 @@ const LogicProgramTwo = () => {
         )}
         <button
           onClick={calculate}
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-green-500 transition-all duration-300"
+          className="w-full bg-blue-500 border border-transparent text-white py-2 rounded hover:bg-transparent hover:text-blue-500 hover:border-blue-500 transition-all duration-300 cursor-pointer"
         >
           Calculate
         </button>
